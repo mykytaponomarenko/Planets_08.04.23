@@ -18,15 +18,19 @@ function handleMouseClick(event) {
     imgElement.id = id ;
     imgElement.src = 'Great_ball.webp';
 
-    let lineElement = document.createElement('line');
-    lineElement.setAttribute('x1', "0");
-    lineElement.setAttribute('y1', "80");
-    lineElement.setAttribute('x2', "100");
-    lineElement.setAttribute('y2', "20");
-    lineElement.setAttribute('stroke', "0");
+    let lineElement = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+    lineElement.setAttribute('x1', event.x);
+    lineElement.setAttribute('y1', event.y);
+    lineElement.setAttribute('x2', event.x*2);
+    lineElement.setAttribute('y2', event.y*2);
+    lineElement.setAttribute('stroke', "black");
+    console.log("event.x: ", event.x);
+    console.log("event.y: ", event.y);
 
     document.body.append(imgElement);
-    document.querySelector('#svg').innerHTML = `<line x1="${ballNumber*10}" y1="80" x2="100" y2="20" stroke="black" />`
+    let svgElemet = document.querySelector('#svg');
+    svgElemet.append((lineElement));
+    svgElemet.setAttribute('viewBox', `0 0 ${window.innerWidth} ${window.innerHeight}`);    
 
     const newBall = {
         x: event.x,
