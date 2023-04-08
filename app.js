@@ -19,7 +19,7 @@ function handleMouseClick(event) {
         y: event.y,
         width: 100,
         height: 100,
-        vx: 5,
+        vx: 50,
         vy: 5,
         element: document.querySelector('#' + id),
       }
